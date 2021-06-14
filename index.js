@@ -18,6 +18,9 @@ app.listen(port, function() {
     console.log(`App are listening on port ${port}`)
 })
 
+//router
+paramRoutes = require('./routes/params.route')
+
 app.get('/', function(req, res) {
     res.render('index', { query: testPostMethod })
 })
@@ -30,7 +33,5 @@ app.post('/', function(req, res) {
     testPostMethod = req.body.testPostMethod
     res.redirect('/')
 })
-
-app.get('/params/:id', (req, res) => {
-    res.render('index', { query: req.params.id})
-})
+ 
+app.use ('/params', paramRoutes)
