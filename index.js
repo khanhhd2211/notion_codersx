@@ -9,5 +9,5 @@ app.listen(port, function() {
 })
 
 app.get('/', function(req, res) {
-    res.render('index', { message: '   hello world'})
+    res.render('index', { query: req.query.q })
 })
