@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
-import classNames from 'classnames'
 
 class Todo extends Component {
     constructor() {
         super()
         this.TodoItems = [ 
-            { value: "Todo items 1", foo: true }, 
-            { value: "Todo items 2", foo: true },
-            { value: "Todo items 3", foo: false }
+            // { value: "Todo items 1", foo: true }, 
+            // { value: "Todo items 2", foo: true },
+            // { value: "Todo items 3", foo: false }
         ];
     }
 
@@ -15,9 +14,12 @@ class Todo extends Component {
         return(
             <div className="Todo">
                 {
-                    this.TodoItems.map((item, index) => {
-                        return <div className={classNames("todoItem", { bar: item.foo })} key={index}>{item.value}</div>
+                    this.TodoItems.length > 0 && this.TodoItems.map((item, index) => {
+                        return <div key={index}>{item.value}</div>
                     })
+                }
+                {
+                    this.TodoItems.length === 0 && "Nothing here ..." 
                 }
             </div>
         );
