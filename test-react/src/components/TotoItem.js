@@ -3,23 +3,34 @@ import React, { Component } from 'react'
 class Todo extends Component {
     constructor() {
         super()
-        this.TodoItems = [ 
-            // { value: "Todo items 1", foo: true }, 
-            // { value: "Todo items 2", foo: true },
-            // { value: "Todo items 3", foo: false }
-        ];
+        this.state = {
+            TodoItems: [] 
+        }
+        // this.addItem = this.addItem.bind(this)
+    }
+    
+    addItem() {
+        let TodoItems = this.state.TodoItems
+        if (TodoItems) {
+            TodoItems.push("Item")
+        }
+        this.setState({
+            TodoItems: TodoItems
+        })
     }
 
     render() {
+        let  TodoItems = this.state.TodoItems
         return(
             <div className="Todo">
+                <button onClick={() => this.addItem.bind(this)()}>Add</button>
                 {
-                    this.TodoItems.length > 0 && this.TodoItems.map((item, index) => {
-                        return <div key={index}>{item.value}</div>
+                    TodoItems.length > 0 && TodoItems.map((item, index) => {
+                        return <div key={index}>{item}</div>
                     })
                 }
                 {
-                    this.TodoItems.length === 0 && "Nothing here ..." 
+                    TodoItems.length === 0 && "Nothing here ..." 
                 }
             </div>
         );
